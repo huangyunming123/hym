@@ -29,7 +29,7 @@ public class HelloController {
 
     @RequestMapping(value = "/get/{id}",method = RequestMethod.GET)
 //    @HystrixCommand(fallbackMethod = "processHystrix_get")
-//     在serveice 统一处理1
+//     在serveice 统一处理
     public List<TGoods> getById(@PathVariable("id") Integer id)
     {
         List<TGoods> byId = tGoodsService.getById(id);
