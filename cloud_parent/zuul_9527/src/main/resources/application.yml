@@ -1,0 +1,20 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: gateway-9527.com  #在eureka 上的显示
+    prefer-ip-address: true
+info:
+  app.name: zuul
+zuul:
+  routes:
+    goods.serviceId: goods   #为什么是goods.serviceId呢  是因为原本是goods/goods/get  第一个goods是微服务名 现在映射为provide
+    goods.path: /provide/**
+  ignored-services: "*"  #忽略那些  目的为了不让映射 与原本的都能被访问 只留一个路口
+#  prefix: /accu
